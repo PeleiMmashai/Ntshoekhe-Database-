@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Ntshoekhe DDBMS</title>
+</head>
+<body>
+    <center>
+        <h1>Edit Patient Details</h1>
+        <hr/>
+        <form method="POST" action="/node1/update/{{Patient.id}}">
+            {% csrf_token %}    
+            <table border="1">
+                <tr>
+                    <td>Patient ID</td>
+                    <td><input type="text" name="id" value="{{Patient.id}}"readonly></td>
+                </tr>
+                <tr>
+                    <td>Patient Name</td>
+                    <td><input type="text" name="first_name" value="{{Patient.first_name}}"></td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td><input type="text" name="last_name" value="{{Patient.last_name}}"></td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td><input type="text" name="date_of_birth" value="{{Patient.date_of_birth}}"></td>
+                </tr>
+                <tr>
+                    <td>Phone number</td>
+                    <td><input type="text" name="phone_number" value="{{Patient.phone_number}}"></td>
+                </tr>
+                <tr>
+                    <td>Emergency</td>
+                    <td><input type="text" name="emergency_contact" value="{{Patient.emergency_contact}}"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Update Record"/>
+                    <td>{% if messages %}
+                        {% for mess in messages %}
+                        <b style="color: green">{{mess}} </b>
+                        {% endfor %}
+                        {% endif %}</td>
+                </tr>
+            </table>
+            </form>
+        <a href="{% url 'show_patient' %}">Go To Home Page</a>
+    </center>
+</body>
+</html>

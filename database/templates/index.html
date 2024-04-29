@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Ntshoekhe DDBMS</title>
+</head>
+<body>
+    <center>
+        <h1>Create Ntshoekhe CRUD Operation to Patients</h1>
+        <hr/>
+        <a href="{% url 'create_record' %}">Create New Patient</a>
+        <table border="1">
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient First Name</th>
+                <th>Patient Last Name</th>
+                <th>Patient DoB </th>
+                <th>Phone Number</th>
+                <th>Emergency Contact</th>
+                <th>Action</th>
+            </tr>
+            {% for result in data %}
+            <tr>
+                <td>{{result.patient_id}}</td>
+                <td>{{result.first_name}}</td>
+                <td>{{result.last_name}}</td>
+                <td>{{result.date_of_birth}}</td>
+                <td>{{result.phone_number}}</td>
+                <td>{{result.emergency_contact}}</td>
+
+                <td><a href="edit/{{result.id}}">Edit</a></td>
+                <td><a href="delete/{{result.id}}" onclick="return confirm('confirm to delete?')">Delete</a></td>
+            </tr>
+            {% endfor %}
+    </center>
+</body>
+</html>
